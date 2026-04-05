@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Market Analysis | Baiao Technical Charting Tools</title>
+    <meta
+      name="description"
+      content="Explore Baiao's public market analysis page with technical charting tools, TradingView integration placeholder, Alpha Vantage market data notes, and structured chart interpretation."
+    />
+    <meta
+      name="keywords"
+      content="market analysis, TradingView advanced charts, technical charting tools, data visualization, Alpha Vantage"
+    />
+    <meta name="theme-color" content="#111315" />
+    <link rel="canonical" href="https://baiao-trading.rfcomphub.com/market-analysis.html" />
+    <link rel="alternate" hreflang="en" href="https://baiao-trading.rfcomphub.com/market-analysis.html" />
+    <link rel="alternate" hreflang="zh-CN" href="https://baiao-trading.rfcomphub.com/zh/market-analysis.html" />
+    <link rel="alternate" hreflang="x-default" href="https://baiao-trading.rfcomphub.com/market-analysis.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo-baiao.svg" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/baiao-datafeed.js"></script>
+    <script defer src="assets/js/advanced-charting.js"></script>
+    <script defer src="assets/js/market.js"></script>
+  </head>
+  <body data-page="market" data-locale="en">
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Baiao home">
+          <img src="assets/images/logo-baiao.svg" alt="Baiao logo" />
+          <span>
+            <strong>Baiao</strong>
+            <em>Market Analysis Platform</em>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="site-header-tools">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <a class="is-active" href="market-analysis.html">Market Analysis</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="terms.html">Terms of Use</a>
+          </nav>
+          <div class="locale-switch" aria-label="Language switch">
+            <a class="is-active" href="market-analysis.html" lang="en">EN</a>
+            <a href="zh/market-analysis.html" lang="zh-CN">中文</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero hero-market compact-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Technical Charting Tools</p>
+            <h1>Market analysis built around structure, not slogans.</h1>
+            <p class="lead">
+              This page demonstrates how Baiao presents public chart analysis with TradingView-ready containers,
+              Alpha Vantage market data notes, and educational commentary based on trend sequence, pivot formation,
+              and wave structure.
+            </p>
+          </div>
+          <div class="hero-panel info-stack">
+            <article>
+              <span>Data Source</span>
+              <strong>Alpha Vantage</strong>
+            </article>
+            <article>
+              <span>Coverage</span>
+              <strong>BTCUSD · EURUSD · AAPL</strong>
+            </article>
+            <article>
+              <span>Purpose</span>
+              <strong>Information and teaching only</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="section chart-lab">
+          <div class="section-copy chart-copy">
+            <p class="eyebrow">TradingView Integration Zone</p>
+            <h2>Advanced Charts local mount with a safe public fallback.</h2>
+            <p>
+              The licensed Advanced Charts bundle is not shipped in this public website package. The stage below will automatically
+              load a local licensed Charting Library package when present at the reserved path, while preserving a fallback preview for public staging.
+            </p>
+          </div>
+
+          <div class="symbol-search-panel">
+            <div class="search-panel-copy">
+              <span>Search More Symbols</span>
+              <p>Look up additional stocks, forex pairs, or digital assets. Try MSFT, NVDA, GBPUSD, USDJPY, ETHUSD, or SOLUSD.</p>
+            </div>
+            <form class="symbol-search-form" id="symbol-search-form">
+              <label class="search-input-wrap">
+                <span class="sr-only">Search symbol</span>
+                <input id="symbol-search-input" name="query" type="search" placeholder="Search symbol or company" autocomplete="off" />
+              </label>
+              <label class="search-select-wrap">
+                <span class="sr-only">Asset type</span>
+                <select id="symbol-search-type" name="type">
+                  <option value="all">All assets</option>
+                  <option value="stock">Stocks</option>
+                  <option value="forex">Forex</option>
+                  <option value="crypto">Digital assets</option>
+                </select>
+              </label>
+              <button class="button button-primary" type="submit">Search</button>
+            </form>
+            <div class="search-feedback" id="search-feedback">Showing curated market symbols by default.</div>
+            <div class="search-results" id="search-results" aria-live="polite"></div>
+          </div>
+
+          <div class="chart-toolbar" aria-label="Market symbol selector">
+            <button class="symbol-button is-active" data-symbol="BITSTAMP:BTCUSD" data-label="BTCUSD">BTCUSD</button>
+            <button class="symbol-button" data-symbol="FX:EURUSD" data-label="EURUSD">EURUSD</button>
+            <button class="symbol-button" data-symbol="NASDAQ:AAPL" data-label="AAPL">AAPL</button>
+          </div>
+
+          <div class="chart-stage">
+            <div class="chart-stage-copy">
+              <span>Licensed mount point</span>
+              <strong id="analysis-title">BTCUSD structure review</strong>
+              <p id="analysis-text">
+                Price is extending from a higher-low base. The active reading focuses on whether the next push can hold above the prior swing shelf.
+              </p>
+              <div class="integration-status" id="advanced-chart-status">
+                <span>Package status</span>
+                <strong>Waiting for local Charting Library package</strong>
+                <p>
+                  Expected local path: vendor/charting_library/charting_library.js. Once the licensed package is added, this area mounts Advanced Charts automatically.
+                </p>
+              </div>
+            </div>
+            <div class="chart-shell">
+              <div class="chart-placeholder" id="advanced-chart-placeholder">
+                <div class="placeholder-grid"></div>
+                <svg viewBox="0 0 920 380" aria-hidden="true">
+                  <path id="placeholder-line" d="M10 300 L120 290 L210 246 L302 260 L396 180 L490 194 L592 124 L700 148 L812 88 L910 102" />
+                  <path id="placeholder-area" d="M10 300 L120 290 L210 246 L302 260 L396 180 L490 194 L592 124 L700 148 L812 88 L910 102 L910 360 L10 360 Z" />
+                </svg>
+                <div class="placeholder-note">
+                  <strong>Advanced Charts Placeholder</strong>
+                  <span>Replace this block with the licensed local Charting Library mount after approval.</span>
+                </div>
+              </div>
+              <div class="licensed-chart-host" id="tv_chart_container" aria-label="Advanced Charts licensed container"></div>
+            </div>
+          </div>
+
+          <div class="widget-card">
+            <div class="widget-card-copy">
+              <span>Public Embedding Preview</span>
+              <h3>Optional widget example for staging.</h3>
+              <p>
+                This preview helps validate layout and public accessibility. It is separate from the licensed Advanced Charts integration.
+              </p>
+            </div>
+            <div class="widget-shell">
+              <div id="tv-widget" class="widget-target"></div>
+            </div>
+          </div>
+
+          <div class="alpha-viewer-card">
+            <div class="viewer-header-row">
+              <div class="widget-card-copy">
+                <span>Alpha Vantage Snapshot</span>
+                <h3>Simple daily market view for the active symbol.</h3>
+                <p>
+                  This panel reads the same local market API used by the chart datafeed and exposes a compact daily snapshot that can be reviewed without opening the chart workspace.
+                </p>
+              </div>
+              <button class="button button-secondary" id="snapshot-refresh" type="button">Refresh Data</button>
+            </div>
+
+            <div class="provider-pill" id="snapshot-provider">Waiting for Alpha Vantage data...</div>
+
+            <div class="snapshot-grid" id="snapshot-metrics">
+              <article>
+                <span>Close</span>
+                <strong id="snapshot-close">--</strong>
+              </article>
+              <article>
+                <span>Change</span>
+                <strong id="snapshot-change">--</strong>
+              </article>
+              <article>
+                <span>Last Refreshed</span>
+                <strong id="snapshot-refreshed">--</strong>
+              </article>
+              <article>
+                <span>Series Type</span>
+                <strong id="snapshot-series">--</strong>
+              </article>
+            </div>
+
+            <div class="snapshot-table-shell">
+              <table class="snapshot-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                  </tr>
+                </thead>
+                <tbody id="snapshot-table-body">
+                  <tr>
+                    <td colspan="5">Loading market snapshot...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="section analysis-grid">
+          <article>
+            <p class="eyebrow">Trend Analysis</p>
+            <h2>Read the dominant direction first.</h2>
+            <p>
+              Our framework starts with the primary direction on higher timeframes and only then inspects the lower-timeframe response.
+              A trend is not treated as a line on the screen but as a sequence of swings that either expand cleanly or lose continuity.
+            </p>
+            <p>
+              In practice, we mark the last decisive impulse, the retracement depth, and whether the recovery breaks a prior pivot with conviction.
+              If structure advances with shallow pullbacks, participation remains orderly. If rebounds shrink and overlap widens, trend quality is fading.
+            </p>
+            <p>
+              This sequencing matters because the same move can mean different things on different scales. A rebound that looks powerful on a short intraday chart may still be only a
+              consolidation leg inside a broader daily decline. Chan-style analysis therefore begins with level selection before interpretation: define the timeframe, define the active structure,
+              and only then discuss continuation, reversal, or exhaustion.
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">Support & Resistance</p>
+            <h2>Price remembers where pressure changed.</h2>
+            <p>
+              Support and resistance are tracked as response zones rather than single pixels. We study where price accelerated, where rejection repeated,
+              and whether the next revisit arrives with compression or exhaustion.
+            </p>
+            <p>
+              A support band that forms after a complete downward segment and holds on retest often becomes the anchor for a new upward phase.
+              A resistance band that rejects multiple attempts without follow-through usually defines the next decision shelf.
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">Wave Structure</p>
+            <h2>Structure is easier to trust when it can be decomposed.</h2>
+            <p>
+              Inspired by Chan-theory-style reading, we review price through strokes, segments, and pivot zones. A stroke reflects a directional move.
+              Multiple strokes form a segment. Overlapping segments can define the center of struggle where the next structural decision becomes visible.
+            </p>
+            <p>
+              The point is not mysticism. The point is compression of information. Once price can be described in a compact structural language,
+              analysts stop arguing in vague adjectives and start comparing the same sequence.
+            </p>
+            <p>
+              In stock analysis, the practical principle is to let the larger structure lead the smaller one. We first identify whether the current segment is still extending,
+              then inspect whether a pullback is merely a normal internal correction or the beginning of a structural break. That is why Chan-style reading pays close attention to the
+              relationship between trend continuity, central overlap, and the efficiency of each new push.
+            </p>
+            <p>
+              A useful working definition is that a pivot zone becomes meaningful only after repeated overlap by consecutive lower-level movements. Once that overlap is visible,
+              analysts can separate three very different states: a market still building balance inside the zone, a market leaving the zone with clean expansion, and a market that repeatedly tests the edge
+              but cannot extend. Those three states often explain more than a long list of indicators.
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">Teaching-Only Signal Notes</p>
+            <h2>Interpretation, not execution.</h2>
+            <p>
+              The page may annotate teaching-only moments such as structure continuation, pivot rejection, or divergence-style loss of momentum.
+              These notes are purely educational descriptions of chart behavior and are not intended as instructions, solicitations, or transaction prompts.
+            </p>
+            <p>
+              A clean continuation note appears when a higher-low sequence is preserved and follow-through confirms the path. A caution note appears when a bounce
+              fails inside prior resistance and market rhythm becomes fragmented.
+            </p>
+          </article>
+        </section>
+
+        <section class="section narrative-section">
+          <div class="section-copy narrow">
+            <p class="eyebrow">Chan-Style Reading Notes</p>
+            <h2>Detailed interpretation for analysts who want a method, not a mood board.</h2>
+          </div>
+          <div class="narrative-columns">
+            <div>
+              <p>
+                A disciplined reading begins with the last completed structural cycle. We look for a finished downward segment, ask whether the rebound simply fills air,
+                and inspect whether the next retracement stays above the prior low. If it does, the market is no longer merely bouncing. It is negotiating a potential transition.
+              </p>
+              <p>
+                The next question is whether the new upward leg can create a recognizable pivot zone. A pivot zone matters because it concentrates disagreement.
+                If price repeatedly accepts that area and then expands out of it, the zone becomes evidence of internal organization rather than random noise.
+              </p>
+              <p>
+                Another core principle is hierarchy. A buy or sell discussion should never be detached from the level being observed. What looks like weakness on a short swing may still be
+                a healthy retracement inside a larger upward segment. In practice, this helps analysts avoid reacting to every fluctuation and instead focus on whether the current move damages
+                the higher-level structure that gave the original thesis its validity.
+              </p>
+            </div>
+            <div>
+              <p>
+                Divergence is treated carefully. It is not an automatic reversal label. A divergence note is meaningful only when a new structural push makes less efficient progress,
+                loses momentum relative to the prior leg, and collides with a known resistance shelf. Without structural context, momentum readings become decorative numbers.
+              </p>
+              <p>
+                The most useful chart is often the one that says no more than needed: where the trend is, where the market hesitated, and which sequence would confirm that the current reading still holds.
+                That is the philosophy of this page.
+              </p>
+              <p>
+                For equities, this method is especially useful when price appears active but direction is unclear. Instead of chasing headlines, we ask whether the stock is building a new center,
+                leaving one with clean follow-through, or failing to extend after repeated attempts. Those distinctions make the difference between a temporary reaction and a meaningful structural change.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section code-section">
+          <div class="section-copy narrow">
+            <p class="eyebrow">Integration Sample</p>
+            <h2>Reserved local package structure for Advanced Charts.</h2>
+            <p>
+              Keep the licensed files local and private. The page now expects the following mount structure and will initialize automatically when it exists.
+            </p>
+          </div>
+          <pre class="code-block"><code>vendor/
+  charting_library/
+    charting_library.js
+    charting_library.css
+    bundles/
+    static/
+
+assets/js/
+  baiao-datafeed.js
+  advanced-charting.js
+              <p>
+                Classical Chan notes also distinguish between the first meaningful reversal point after a completed decline and the first constructive pullback after that reversal is confirmed.
+                On this site we describe those moments only as teaching labels for structure recognition. The purpose is to show how analysts reduce uncertainty step by step, not to turn one chart annotation
+                into an execution command.
+              </p>
+
+window.BaiaoAdvancedCharting.init({
+  symbol: "BITSTAMP:BTCUSD",
+  interval: "1D",
+  containerId: "tv_chart_container",
+});</code></pre>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Sichuan Baiao Technology Co., Ltd</strong>
+          <p>Technical charting tools, financial data visualization, and public market analysis pages.</p>
+        </div>
+        <div class="footer-links">
+              <p>
+                The practical takeaway from the source material is simple: do not debate divergence before a trend exists, do not debate reversal before the active level is clear,
+                and do not treat consolidation as wasted space. Consolidation is where the next directional decision is organized. That logic is what we integrate into Baiao's educational market commentary.
+              </p>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+        <div>
+          <span>Email</span>
+          <a href="mailto:baiao-trading@rfcomphub.com">baiao-trading@rfcomphub.com</a>
+          <p class="copyright">© <span data-year></span> Baiao. Information only.</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+  </body>
+</html>

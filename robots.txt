@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# hreflang alternate relationships are declared in sitemap.xml.
+Sitemap: https://baiao-trading.rfcomphub.com/sitemap.xml

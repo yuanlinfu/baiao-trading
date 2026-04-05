@@ -1,0 +1,63 @@
+{
+  "name": "baiao-market-api-contract",
+  "version": "1.2.0",
+  "basePath": "/api/market",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/config",
+      "purpose": "Returns supported resolutions, exchanges, symbol types, and provider metadata for the TradingView datafeed bootstrap.",
+      "query": {
+        "locale": "optional locale, supports en or zh"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/symbols",
+      "query": {
+        "query": "optional symbol keyword",
+        "type": "optional symbol type",
+        "locale": "optional locale, supports en or zh"
+      },
+      "purpose": "Returns symbol search results merged from curated market symbols and Alpha Vantage symbol search."
+    },
+    {
+      "method": "GET",
+      "path": "/symbol",
+      "query": {
+        "symbol": "full symbol id such as BITSTAMP:BTCUSD or AV:MSFT",
+        "locale": "optional locale, supports en or zh"
+      },
+      "purpose": "Returns a single TradingView-compatible symbol descriptor backed by Alpha Vantage symbol metadata."
+    },
+    {
+      "method": "GET",
+      "path": "/history",
+      "query": {
+        "symbol": "full symbol id",
+        "resolution": "1D | 1W",
+        "from": "unix timestamp seconds",
+        "to": "unix timestamp seconds",
+        "locale": "optional locale, supports en or zh"
+      },
+      "purpose": "Returns historical OHLCV bars shaped for TradingView Charting Library consumption and sourced from Alpha Vantage when available."
+    },
+    {
+      "method": "GET",
+      "path": "/snapshot",
+      "query": {
+        "symbol": "full symbol id",
+        "locale": "optional locale, supports en or zh"
+      },
+      "purpose": "Returns a compact daily snapshot for quick viewing on the market analysis page."
+    },
+    {
+      "method": "GET",
+      "path": "/provider-status",
+      "purpose": "Returns cache and rate-limit status for the Alpha Vantage proxy layer.",
+      "query": {
+        "locale": "optional locale, supports en or zh"
+      }
+    }
+  ]
+}

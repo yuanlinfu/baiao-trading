@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>市场分析 | Baiao 技术图表工具</title>
+    <meta
+      name="description"
+      content="查看 Baiao 的公开市场分析页面，了解技术图表工具、TradingView 集成挂载位、Alpha Vantage 市场数据说明与结构化图表解读。"
+    />
+    <meta
+      name="keywords"
+      content="市场分析, TradingView advanced charts, 技术图表工具, 数据可视化, Alpha Vantage"
+    />
+    <meta name="theme-color" content="#111315" />
+    <link rel="canonical" href="https://baiao-trading.rfcomphub.com/zh/market-analysis.html" />
+    <link rel="alternate" hreflang="en" href="https://baiao-trading.rfcomphub.com/market-analysis.html" />
+    <link rel="alternate" hreflang="zh-CN" href="https://baiao-trading.rfcomphub.com/zh/market-analysis.html" />
+    <link rel="alternate" hreflang="x-default" href="https://baiao-trading.rfcomphub.com/market-analysis.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="../assets/images/logo-baiao.svg" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script defer src="../assets/js/main.js"></script>
+    <script defer src="../assets/js/baiao-datafeed.js"></script>
+    <script defer src="../assets/js/advanced-charting.js"></script>
+    <script defer src="../assets/js/market.js"></script>
+  </head>
+  <body data-page="market" data-locale="zh">
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Baiao 首页">
+          <img src="../assets/images/logo-baiao.svg" alt="Baiao 标志" />
+          <span>
+            <strong>Baiao</strong>
+            <em>Market Analysis Platform</em>
+          </span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-label="打开导航">
+          <span></span>
+          <span></span>
+        </button>
+        <div class="site-header-tools">
+          <nav class="site-nav" aria-label="主导航">
+            <a href="index.html">首页</a>
+            <a class="is-active" href="market-analysis.html">市场分析</a>
+            <a href="about.html">关于我们</a>
+            <a href="contact.html">联系我们</a>
+            <a href="terms.html">使用条款</a>
+          </nav>
+          <div class="locale-switch" aria-label="语言切换">
+            <a href="../market-analysis.html" lang="en">EN</a>
+            <a class="is-active" href="market-analysis.html" lang="zh-CN">中文</a>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero hero-market compact-hero">
+          <div class="hero-copy">
+            <p class="eyebrow">技术图表工具</p>
+            <h1>围绕结构展开市场分析，而不是围绕口号堆砌页面。</h1>
+            <p class="lead">
+              本页展示 Baiao 如何使用 TradingView 预留容器、Alpha Vantage 市场数据说明，以及基于趋势序列、枢纽形成与波段结构的教学性评论来呈现公开图表分析。
+            </p>
+          </div>
+          <div class="hero-panel info-stack">
+            <article>
+              <span>数据来源</span>
+              <strong>Alpha Vantage</strong>
+            </article>
+            <article>
+              <span>覆盖标的</span>
+              <strong>BTCUSD · EURUSD · AAPL</strong>
+            </article>
+            <article>
+              <span>用途</span>
+              <strong>仅供信息与教学参考</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="section chart-lab">
+          <div class="section-copy chart-copy">
+            <p class="eyebrow">TradingView 集成区域</p>
+            <h2>本地 Advanced Charts 挂载位，配合安全的公开预览回退。</h2>
+            <p>
+              授权版 Advanced Charts 包不会直接随公开网站发布。下方区域会在检测到预留路径中的本地授权版 Charting Library 时自动加载；若授权包尚未放入，则保留公开预览占位以便演示和审查。
+            </p>
+          </div>
+
+          <div class="symbol-search-panel">
+            <div class="search-panel-copy">
+              <span>搜索更多标的</span>
+              <p>可继续查看更多股票、外汇或数字资产。可尝试输入 MSFT、NVDA、GBPUSD、USDJPY、ETHUSD 或 SOLUSD。</p>
+            </div>
+            <form class="symbol-search-form" id="symbol-search-form">
+              <label class="search-input-wrap">
+                <span class="sr-only">搜索代码</span>
+                <input id="symbol-search-input" name="query" type="search" placeholder="搜索代码或公司名称" autocomplete="off" />
+              </label>
+              <label class="search-select-wrap">
+                <span class="sr-only">资产类型</span>
+                <select id="symbol-search-type" name="type">
+                  <option value="all">全部资产</option>
+                  <option value="stock">股票</option>
+                  <option value="forex">外汇</option>
+                  <option value="crypto">数字资产</option>
+                </select>
+              </label>
+              <button class="button button-primary" type="submit">搜索</button>
+            </form>
+            <div class="search-feedback" id="search-feedback">默认展示精选市场标的。</div>
+            <div class="search-results" id="search-results" aria-live="polite"></div>
+          </div>
+
+          <div class="chart-toolbar" aria-label="市场标的选择器">
+            <button class="symbol-button is-active" data-symbol="BITSTAMP:BTCUSD" data-label="BTCUSD">BTCUSD</button>
+            <button class="symbol-button" data-symbol="FX:EURUSD" data-label="EURUSD">EURUSD</button>
+            <button class="symbol-button" data-symbol="NASDAQ:AAPL" data-label="AAPL">AAPL</button>
+          </div>
+
+          <div class="chart-stage">
+            <div class="chart-stage-copy">
+              <span>授权挂载点</span>
+              <strong id="analysis-title">BTCUSD 结构复盘</strong>
+              <p id="analysis-text">
+                价格正从更高低点形成的基底继续上推。当前重点观察下一轮上冲能否稳住前一摆动平台上方。
+              </p>
+              <div class="integration-status" id="advanced-chart-status">
+                <span>包状态</span>
+                <strong>等待本地 Charting Library 包</strong>
+                <p>
+                  预期本地路径：vendor/charting_library/charting_library.js。授权包放入后，此区域会自动挂载 Advanced Charts。
+                </p>
+              </div>
+            </div>
+            <div class="chart-shell">
+              <div class="chart-placeholder" id="advanced-chart-placeholder">
+                <div class="placeholder-grid"></div>
+                <svg viewBox="0 0 920 380" aria-hidden="true">
+                  <path id="placeholder-line" d="M10 300 L120 290 L210 246 L302 260 L396 180 L490 194 L592 124 L700 148 L812 88 L910 102" />
+                  <path id="placeholder-area" d="M10 300 L120 290 L210 246 L302 260 L396 180 L490 194 L592 124 L700 148 L812 88 L910 102 L910 360 L10 360 Z" />
+                </svg>
+                <div class="placeholder-note">
+                  <strong>Advanced Charts 占位预览</strong>
+                  <span>获得授权后，将此区域替换为本地 Charting Library 挂载实例。</span>
+                </div>
+              </div>
+              <div class="licensed-chart-host" id="tv_chart_container" aria-label="Advanced Charts 授权容器"></div>
+            </div>
+          </div>
+
+          <div class="widget-card">
+            <div class="widget-card-copy">
+              <span>公开嵌入预览</span>
+              <h3>用于演示阶段的可选 widget 示例。</h3>
+              <p>
+                这个预览帮助验证页面布局与公开可访问性。它与授权版 Advanced Charts 集成相互独立。
+              </p>
+            </div>
+            <div class="widget-shell">
+              <div id="tv-widget" class="widget-target"></div>
+            </div>
+          </div>
+
+          <div class="alpha-viewer-card">
+            <div class="viewer-header-row">
+              <div class="widget-card-copy">
+                <span>Alpha Vantage 快照</span>
+                <h3>为当前标的提供简洁的日线市场视图。</h3>
+                <p>
+                  此面板读取与图表 datafeed 相同的本地市场 API，并输出紧凑的日线快照，方便在不打开完整图表工作区的情况下快速审阅。
+                </p>
+              </div>
+              <button class="button button-secondary" id="snapshot-refresh" type="button">刷新数据</button>
+            </div>
+
+            <div class="provider-pill" id="snapshot-provider">等待 Alpha Vantage 数据...</div>
+
+            <div class="snapshot-grid" id="snapshot-metrics">
+              <article>
+                <span>收盘价</span>
+                <strong id="snapshot-close">--</strong>
+              </article>
+              <article>
+                <span>涨跌</span>
+                <strong id="snapshot-change">--</strong>
+              </article>
+              <article>
+                <span>最近刷新</span>
+                <strong id="snapshot-refreshed">--</strong>
+              </article>
+              <article>
+                <span>序列类型</span>
+                <strong id="snapshot-series">--</strong>
+              </article>
+            </div>
+
+            <div class="snapshot-table-shell">
+              <table class="snapshot-table">
+                <thead>
+                  <tr>
+                    <th>日期</th>
+                    <th>开盘</th>
+                    <th>最高</th>
+                    <th>最低</th>
+                    <th>收盘</th>
+                  </tr>
+                </thead>
+                <tbody id="snapshot-table-body">
+                  <tr>
+                    <td colspan="5">正在加载市场快照...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="section analysis-grid">
+          <article>
+            <p class="eyebrow">趋势分析</p>
+            <h2>先读主导方向，再看局部反应。</h2>
+            <p>
+              我们的框架先从更高周期确认主导方向，然后再检查低周期的响应。趋势不是屏幕上的一条线，而是一组要么持续扩张、要么逐渐失去连贯性的摆动序列。
+            </p>
+            <p>
+              实际工作中，我们会标出最近一次决定性推动、回撤深度，以及反弹是否有力突破前一关键枢纽。如果结构推进时回撤浅而整齐，则参与仍显有序；若反弹缩短且重叠增多，则趋势质量正在减弱。
+            </p>
+            <p>
+              这里最关键的是先定级别，再谈含义。同一段上涨，在短周期里也许很强，但放到日线里可能仍只是更大级别下跌中的一次盘整反抽。
+              因此缠论式分析不会先讨论结论，而是先明确观察周期、当前走势类型，以及这段波动究竟属于延续、转折还是整理。
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">支撑与阻力</p>
+            <h2>价格会记住压力发生变化的位置。</h2>
+            <p>
+              我们把支撑阻力视为反应区，而不是单一像素点。重点观察价格加速的区域、重复拒绝的区域，以及下一次回访时是带着压缩还是带着衰竭而来。
+            </p>
+            <p>
+              当一段完整下行结束后形成支撑带，并在回踩中被守住，它往往会成为新一轮上行阶段的锚点。相反，若阻力带多次压制上攻且始终没有延续，则它通常定义了下一个决策平台。
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">波段结构</p>
+            <h2>能被拆解的结构，才更值得信任。</h2>
+            <p>
+              我们借鉴缠论式阅读，用笔、线段与中枢去检查价格。笔对应单方向移动，多笔组合成线段，线段之间的重叠则可能形成多空争夺的核心区域，使下一次结构决策更清晰。
+            </p>
+            <p>
+              重点并不在于神秘化，而在于信息压缩。一旦价格能被整理成紧凑的结构语言，分析者就不再用含糊形容词争论，而是围绕同一组序列进行比较。
+            </p>
+            <p>
+              放到股票分析里，更实用的原则是让大级别结构先行，小级别波动后看。我们先判断当前线段是否仍在延伸，再区分一次回撤只是段内正常整理，还是已经开始破坏原有结构。
+              这也是为什么缠论式阅读会反复关注趋势连续性、中枢重叠关系，以及每一次新推动是否还保持效率。
+            </p>
+            <p>
+              更具体地说，只有当连续次级别走势出现反复重叠时，中枢才具有分析价值。中枢一旦成立，就可以把市场状态区分为三类：仍在中枢内蓄势，已经有效离开中枢，或者反复试探边界却始终无法延续。
+              这三种状态，往往比单看指标更能解释股票为什么强、为什么弱、为什么只是热闹而没有方向。
+            </p>
+          </article>
+          <article>
+            <p class="eyebrow">教学信号说明</p>
+            <h2>只做解读，不做执行提示。</h2>
+            <p>
+              页面可能会标注诸如结构延续、枢纽拒绝，或类似背驰式动能减弱的教学性时点。这些说明仅用于解释图表行为，不构成指令、招揽或交易建议。
+            </p>
+            <p>
+              当更高低点序列得以保持，且后续跟随确认方向时，我们会给出延续说明；若反弹在前高阻力内失败，且节奏逐渐碎裂，则会给出谨慎提示。
+            </p>
+          </article>
+        </section>
+
+        <section class="section narrative-section">
+          <div class="section-copy narrow">
+            <p class="eyebrow">缠论式阅读笔记</p>
+            <h2>给需要方法论而不是情绪板的分析者，提供更细的解释框架。</h2>
+          </div>
+          <div class="narrative-columns">
+            <div>
+              <p>
+                一次有纪律的阅读，始于最近一轮完整结构周期。我们先看下行段是否已经完成，再判断反弹究竟只是回补空气，还是下一次回撤已经站稳前低之上。若后者成立，市场就不再只是反抽，而是在协商潜在的结构转换。
+              </p>
+              <p>
+                下一步要看新的上行腿是否能形成可识别的枢纽区域。枢纽之所以重要，是因为它压缩了分歧。如果价格多次接受该区域，并从中扩张离开，那么这个区域就是内部组织性的证据，而不是随机噪音。
+              </p>
+              <p>
+                另一个核心原则是级别分明。任何买卖点讨论都不能脱离所观察的级别。某个短波段看起来走弱，放在更大一级的上升线段里，可能仍只是一次健康回撤。
+                实际分析时，这能帮助我们避免对每一次波动都过度反应，而是回到原先判断成立所依赖的更高一级结构是否仍然完好。
+              </p>
+              <p>
+                原始文档里反复强调的一点，是第一类与第二类买卖点都必须放回完整结构里理解。我们在本站只把这些概念作为教学标签，用来说明一次下跌结束后的首个关键转折，
+                以及转折确认后第一次具有建设性的回撤，而不是把它们包装成机械化信号。
+              </p>
+            </div>
+            <div>
+              <p>
+                对背驰要保持克制。它不是自动反转标签。只有当新一轮结构推进效率下降、相对上一腿失去动能，并与既有阻力带发生碰撞时，背驰提示才具有意义。脱离结构背景的动能数字，只会变成装饰。
+              </p>
+              <p>
+                最有价值的图表，往往只说必须说的话：趋势在哪、市场在哪停顿、以及接下来哪一段序列会证明当前解读仍然有效。这就是本页的设计哲学。
+              </p>
+              <p>
+                对股票来说，这套方法尤其适合处理“看起来很活跃，但方向并不清楚”的阶段。与其追逐题材和消息面，不如回到结构本身：股价是在形成新的中枢，还是已经有效离开旧中枢，抑或只是多次试图上攻却始终无法延续。
+                这些区别，决定了一次波动只是短期反应，还是已经构成了值得重视的结构变化。
+              </p>
+              <p>
+                从这些“教你炒股票”的方法里，可以提炼出一条最实用的工作顺序：没有趋势，不谈背驰；没有级别，不谈买卖点；没有中枢与走势完成的判断，就不急着给市场贴上反转或突破的标签。
+                这也是我们在百傲公开分析页面里整合缠论方法时所坚持的表达边界。
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section code-section">
+          <div class="section-copy narrow">
+            <p class="eyebrow">集成示例</p>
+            <h2>为 Advanced Charts 预留的本地授权包结构。</h2>
+            <p>
+              授权文件应始终保留在本地并避免公开提交。页面当前按以下目录结构进行检测，并在存在时自动初始化。
+            </p>
+          </div>
+          <pre class="code-block"><code>vendor/
+  charting_library/
+    charting_library.js
+    charting_library.css
+    bundles/
+    static/
+
+assets/js/
+  baiao-datafeed.js
+  advanced-charting.js
+
+window.BaiaoAdvancedCharting.init({
+  symbol: "BITSTAMP:BTCUSD",
+  interval: "1D",
+  containerId: "tv_chart_container",
+});</code></pre>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Sichuan Baiao Technology Co., Ltd</strong>
+          <p>技术图表工具、金融数据可视化与公开市场分析页面。</p>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">首页</a>
+          <a href="about.html">关于我们</a>
+          <a href="terms.html">使用条款</a>
+        </div>
+        <div>
+          <span>邮箱</span>
+          <a href="mailto:baiao-trading@rfcomphub.com">baiao-trading@rfcomphub.com</a>
+          <p class="copyright">© <span data-year></span> Baiao。仅供信息参考。</p>
+        </div>
+      </footer>
+    </div>
+    <script src="https://s3.tradingview.com/tv.js"></script>
+  </body>
+</html>

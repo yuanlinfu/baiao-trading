@@ -1,0 +1,3 @@
+Place the licensed TradingView Charting Library package in this directory.
+Do not commit proprietary library files to a public repository.
+Expected entry file: charting_library.js

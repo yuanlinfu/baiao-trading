@@ -1,0 +1,9 @@
+{
+  "name": "baiao-market-analysis-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public market analysis website with local TradingView Charting Library mount and Alpha Vantage-backed market API contract.",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
