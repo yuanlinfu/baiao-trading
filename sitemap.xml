@@ -49,6 +49,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://baiao-trading.rfcomphub.com/contact.html" />
   </url>
   <url>
+    <loc>https://baiao-trading.rfcomphub.com/tradingview.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://baiao-trading.rfcomphub.com/tradingview.html" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://baiao-trading.rfcomphub.com/zh/tradingview.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://baiao-trading.rfcomphub.com/tradingview.html" />
+  </url>
+  <url>
+    <loc>https://baiao-trading.rfcomphub.com/zh/tradingview.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://baiao-trading.rfcomphub.com/tradingview.html" />
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://baiao-trading.rfcomphub.com/zh/tradingview.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://baiao-trading.rfcomphub.com/tradingview.html" />
+  </url>
+  <url>
     <loc>https://baiao-trading.rfcomphub.com/terms.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://baiao-trading.rfcomphub.com/terms.html" />
     <xhtml:link rel="alternate" hreflang="zh-CN" href="https://baiao-trading.rfcomphub.com/zh/terms.html" />
