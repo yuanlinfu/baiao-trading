@@ -6,7 +6,7 @@
 
 set -e
 # 提交信息设置
-COMMIT_MSG="tradingview.html"
+COMMIT_MSG="tradingview.html中文调整"
 ############################
 # 基础变量设置
 ############################
